@@ -10,6 +10,10 @@ const app = express();
 app.use(cors()).use(express.json()).use(express.urlencoded({ extended: true }));
 
 app.use("/", router);
+app.get("/",(req, res) => {
+  
+    res.send("started")
+  })
 const server = http.createServer(app);
 
 const io = require("socket.io")(server, {
