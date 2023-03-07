@@ -21,7 +21,7 @@ router.post("/csv", (req, res) => {
   if (csvData) {
     fs.writeFile('./input.csv', csvData, 'utf8', function (err) {
       if (err) {
-        res.status(500).send({ error: "something went wrong! Please try again" });
+        res.status(500).send({ error: `something went wrong! Please try again ${err}` });
       } else {
         calculateTime(req, res);
       }
