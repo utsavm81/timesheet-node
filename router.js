@@ -6,7 +6,7 @@ const moment = require('moment');
 const path = require('path');
 
 
-const filePath = './input.csv';
+const filePath = 'https://filebin.net/6sgt6pox2g1piw40/input.csv';
 
 fs.chmod(filePath, '666', (err) => {
   if (err) throw err;
@@ -87,7 +87,7 @@ const calculateTime = (req, res) => {
   let header = [];
 
   try {
-    fs.createReadStream('./input.csv')
+    fs.createReadStream('https://filebin.net/6sgt6pox2g1piw40/input.csv')
       .pipe(csv.parse())
       .on('error', (error) => console.error(error))
       .on('data', (row) => {
