@@ -5,6 +5,14 @@ const csv = require('@fast-csv/parse');
 const moment = require('moment');
 const path = require('path');
 
+
+const filePath = './input.csv';
+
+fs.chmod(filePath, '666', (err) => {
+  if (err) throw err;
+  console.log(`Write permission granted to ${filePath}`);
+});
+
 router.get("/csv", (req, res) => {
 
   let options = {
@@ -19,7 +27,7 @@ router.get("/csv", (req, res) => {
 router.post("/csv", (req, res) => {
   let { csvData } = req.body;
   if (csvData) {
-    fs.writeFile('./input.csv', csvData, 'utf8', function (err) {
+    fs.writeFile(filePath, csvData, 'utf8', function (err) {
       if (err) {
         res.status(500).send({ error: `something went wrong! Please try again ${err}` });
       } else {
